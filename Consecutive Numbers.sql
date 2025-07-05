@@ -1,0 +1,1 @@
+select distinct t.num ConsecutiveNums from (select num, lead(num,1) OVER (ORDER BY id) as next, lag(num,1) OVER (ORDER BY id) as prev from logs) t where t.num=t.prev and t.num=t.next;
